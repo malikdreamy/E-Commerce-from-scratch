@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Explore the latest fashion trends and elevate your style with our curated blog. From must-have accessories to the timeless elegance of luxury watches, we bring you the best in contemporary fashion. Stay chic and on time - your go-to source for staying ahead in the world of fashion and luxury."/>
+    <link rel="icon" href="https://res.cloudinary.com/dodie1q2w/image/upload/v1694766823/7173014341636956259_sc3avx.svg">
+
+    <link href="/css/cart.css" rel="stylesheet" type="text/css">
+    <link href="/css/mediaquery.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+   
+    <%- include('partials/navbar')%>
+
+    <% function truncateText(text, maxLength) {%>
+     <% return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;%>
+    <%} %>
+
+    <div class="wrapper" >
+      <div class="container text-center">
+        <h1 class="mt-3">Fashion Blog & Trending Styles</h1>
+        <div class="row justify-content-center text-center searchResults">
+          <% if (blogs) { %>
+            <% for (let i = 0; i < blogs.length; i++) { %>
+              <div class="col-md-6 mb-3 mt-3">
+                <div class="card">
+                  <a href="/blog/<%= blogs[i].title %>">
+                    <img src="<%= blogs[i].mainImage %>" class="card-img-top" alt="...">
+                  </a>
+                  <div class="card-body">
+                    <a href="/blog/<%= blogs[i].title %>" style="color:black; text-decoration: none;"><h5 class="card-title"><%= blogs[i].title %></h5></a>
+                    <p class="card-text"><%= truncateText(blogs[i].mainContent, 75) %></p>
+                    <a href="/blog/<%= blogs[i].title %>" class="btn btn-primary">Read Full Article</a>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+
+      <!--view more products pagination--> 
+<div class="text-center page-pagination-container mt-5">
+  <%for(i=1; i <= totalPages; i++){ %>
+   <div class="pagination-page-number" style="display: inline; border: 2px solid; height: 2em; width: 2em; border-radius: 99px; border-color: grey; margin: 5px;"><%= i %></div>
+   <%}%>
+</div>
+<!-- end pagination-->
+  
+
+
+          <!--successfully added to cart modal-->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+      
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           <h2 class="text-success">Successfully Added To Cart!</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+       
+      <!-- cart modal-->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+        <div class="modal-header">
+       
+            <div class="modal-body">
+  
+     <button class="btn text-danger" id="close-cart" data-bs-dismiss="modal"> Close X</button>
+  <div class="cart-container">
+  <div class="row gx-5 products text-center">
+    <div class="col-12">
+      <div class="cart-products">
+        <% if (cart) { %>
+          <% for (let i = 0; i < cart.length; i++) { %>
+            <div class="card item-in-cart" id="<%= cart[i].product._id %>">
+              <img src='<%= cart[i].product.mainImage %>' class="card-img-top cart-img" style="width: 50%;" alt='..' />
+              <div class="card-body">
+                <h5 class="card-title"><%= cart[i].product.productName %> </h5>
+                <p class="card-text">Option: <%= cart[i].option %></p>
+                <p class="card-text">Category: <%= cart[i].product.category %></p>
+                <p class="card-text">Price: $<%= cart[i].product.price %></p>
+                <!-- Remove the data-dismiss attribute from the button -->
+                <button type="button" class="btn btn-danger cart-remove-btn">Remove</button>
+              </div>
+            </div>
+          <% } } else { %> 
+            <h3>No Items Added Yet</h3>
+          <% } %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+  <button class="btn cardBtn btn-success check-out-cart">Check Out</button>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
+
+
+
+        </div><!-- end container div-->
+        <div class="push"></div>
+      </div>
+      </div>
+
+
+     <%- include('partials/footer')%>
+
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src ="/blogs.js"></script>
+</body>
+</html> 

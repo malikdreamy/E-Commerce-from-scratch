@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %></title>
+    <link rel="icon" href="https://res.cloudinary.com/dodie1q2w/image/upload/v1694766823/7173014341636956259_sc3avx.svg">
+
+    <link href="/css/mediaquery.css" rel="stylesheet" type="text/css">
+    <link href="/css/cart.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!--Nav Bar-->
+   <%- include('partials/navbar') %>
+
+
+    <!-- main content-->
+    <div class="wrapper">
+      <div class="container">
+        
+        <div class="row text-center">
+          <h1 class="mt-5 page-heading" style="color:black;"><%= name %></h1>
+          
+          <!-- Search Bar-->
+            <div class="input-group mb-3" >
+        <span class="input-group-text" id="search-button" ><i class="fa fa-search" aria-hidden="true"></i></span>
+        <div class="form-floating">
+          <input type="text" class="form-control search-input" id="floatingInputGroup1" placeholder="Search Men Shoes"/>
+          <label htmlFor="floatingInputGroup1">Search Products</label>
+        </div>
+      </div>
+      </div>
+      
+      <div class="row products text-center" id="searchResults">
+          
+
+  <!-- Products-->
+  <% for (let i = 0; i < products.length; i++) { %>
+    <article class='profile-card text-center'>
+      <div class='card-body'>
+        <div class='row '>
+    <div class="col-md-3 col-lg-4 col-sm-6 product"> <!-- Adjust the column sizes as needed -->
+      <div class="card" id=<%= products[i]._id %> style="border-width: 0px;">
+        <img src=<%= products[i].mainImage %> class="card-img-top img-fluid product-img" alt='...' />
+        <div class="card-body">
+          <b class="card-title"><%= products[i].productName %></b>
+          <!-- <p class="card-text"><%= products[i].description %></p> -->
+          <h6>$<%= products[i].price %></h6>
+          <button class="btn cardBtn view-product" style="color: white; background-color: rgb(60, 60, 138); border-radius: 2px;">View Details</button>
+          <button class="btn cardbtn selectSize" style="color:white; background-color: rgb(80, 174, 85); border-radius: 2px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add To Cart
+          </button>
+          <ul class="product-options">
+            <%if(products[i].options.length > 0) {%>
+          <% for (let j = 0; j < products[i].options.length; j++) { %>
+              <li class="list-group-item" style="display: none;"><div></div><b><%= products[i].options[j] %></b></li>
+              <% } %>
+              <% } %>
+            </ul>
+        </div>
+    </div>
+      </div>
+      </div>
+      </div>
+      </article>
+
+  <% } %>
+        
+  <!-- <button class="btn btn-info view-more-products mt-3" style="color:black;">View More</button> -->
+        
+  
+</div> <!-- end product container-->
+
+<!--view more products pagination--> 
+<div class="text-center page-pagination-container mt-5">
+  <%for(i=1; i <= totalPages; i++){ %>
+   <div class="pagination-page-number" style="display: inline; border: 2px solid; height: 2em; width: 2em; border-radius: 99px; border-color: grey; margin: 5px;"><%= i %></div>
+   <%}%>
+</div>
+<!-- end pagination-->
+
+
+
+
+
+<!-- size chart modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Select Option</h1>
+        <img class="card-img-top" alt="product"/>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>Name</h4>
+        <b>Price</b>
+      <div class="card" style="width: '18rem';">
+ <ul class="list-group list-group-flush">
+  
+ </ul>
+ </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary size-chart-dismiss" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary add-to-cart">Add To Cart</button> 
+      </div>
+    </div>
+  </div>
+</div> 
+
+    <!--successfully added to cart modal-->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+      
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           <h2 class="text-success">Successfully Added To Cart!</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- cart modal-->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<div class="modal-dialog">
+  <div class="modal-content">
+    
+      <div class="modal-header">
+     
+          <div class="modal-body">
+
+   <button class="btn text-danger" id="close-cart" data-bs-dismiss="modal"> Close X</button>
+<div class="cart-container">
+<div class="row gx-5 products text-center">
+  <div class="col-12">
+    <div class="cart-products">
+      <% if (cart) { %>
+        <% for (let i = 0; i < cart.length; i++) { %>
+          <div class="card item-in-cart" id="<%= cart[i].product._id %>">
+            <img src='<%= cart[i].product.mainImage %>' class="card-img-top cart-img" style="width: 50%;" alt='..' />
+            <div class="card-body">
+              <h5 class="card-title"><%= cart[i].product.productName %> </h5>
+              <p class="card-text">Option: <%= cart[i].option %></p>
+              <p class="card-text">Category: <%= cart[i].product.category %></p>
+              <p class="card-text">Price: $<%= cart[i].product.price %></p>
+              <!-- Remove the data-dismiss attribute from the button -->
+              <button type="button" class="btn btn-danger cart-remove-btn">Remove</button>
+            </div>
+          </div>
+        <% } } else { %> 
+          <h3>No Items Added Yet</h3>
+        <% } %>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+<button class="btn cardBtn btn-success check-out-cart">Check Out</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="push"></div>
+</div>
+     
+    
+<%- include('partials/footer')%>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="/pages.js"></script>
+    
+</body>
+</html>
+          
+          

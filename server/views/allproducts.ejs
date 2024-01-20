@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="icon" href="https://res.cloudinary.com/dodie1q2w/image/upload/v1694766823/7173014341636956259_sc3avx.svg">
+
+    <link href="/css/mediaquery.css" rel="stylesheet" type="text/css">
+    <link href="/css/cart.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!--Nav Bar-->
+    <%- include('partials/navbar') %>
+
+
+    <!-- main content-->
+    <div class="wrapper">
+      <div class="container">
+        <div class="row gy-3 gx-5 products text-center">
+          <h1 class="mt-5 page-heading">All Watches</h1>
+          
+          <!-- Search Bar-->
+                         <div class="input-group mb-3" >
+        <span class="input-group-text" id="search-button" ><i class="fa fa-search" aria-hidden="true"></i></span>
+        <div class="form-floating">
+          <input type="text" class="form-control search-input" id="floatingInputGroup1" placeholder="Search Men Shoes"/>
+          <label htmlFor="floatingInputGroup1">Search Products</label>
+        </div>
+      </div>
+      </div>
+      
+      <div class="row products text-center" id="searchResults">
+          
+        <% for (let i = 0; i < products.length; i++) { %>
+          <div class="col-md-3 col-lg-4 col-sm-6 product"> <!-- Adjust the column sizes as needed -->
+            <div class="card" id=<%= products[i]._id %>>
+              <img src=<%= products[i].mainImage %> class="card-img-top" alt='...' />
+              <div class="card-body">
+                <h5 class="card-title"><%= products[i].productName %></h5>
+                <!-- <p class="card-text"><%= products[i].description %></p> -->
+                <h6>$<%= products[i].price %></h6>
+                <button class="btn cardBtn view-product view-btn">View Details</button>
+                <button class="btn cardbtn  selectSize" data-toggle="modal" data-target="#exampleModal">
+                  Add To Cart
+                </button>
+                <ul class="product-options">
+                <% for (let j = 0; j < products[i].options.length; j++) { %>
+                    <li class="list-group-item" style="display: none;"><div></div><b><%= products[i].options[j] %></b></li>
+                    <% } %>
+                  </ul>
+              </div>
+            </div>
+          </div> <!-- end product row -->
+        <% } %>
+        
+        
+        
+        
+        
+        
+      </div> <!-- end product container-->
+
+      <!--View More Products-->
+      <div class="text-center">
+              <button class="btn view-more-products mt-3" style="color:white">View More</button>
+</div>
+
+
+
+<!-- size chart modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Select Color Option:</h1>
+        <img class="card-img-top" alt="product"/>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>Name</h4>
+        <b>Price</b>
+      <div class="card" style="width: '18rem';">
+ <ul class="list-group list-group-flush">
+  
+ </ul>
+ </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary size-chart-dismiss" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary add-to-cart">Add To Cart</button> 
+      </div>
+    </div>
+  </div>
+</div> 
+
+          <!--successfully added to cart modal-->
+          <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+            
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                 <h2 class="text-success">Successfully Added To Cart!</h2>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- cart modal-->
+  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+          
+            <div class="modal-header">
+           
+                <div class="modal-body">
+
+         <button class="btn text-danger" id="close-cart" data-dismiss="modal"> Close X</button>
+    <div class="cart-container">
+      <div class="row gx-5 products text-center">
+        <div class="col-12">
+          <div class="cart-products">
+            <% if (cart) { %>
+              <% for (let i = 0; i < cart.length; i++) { %>
+                <div class="card item-in-cart" id="<%= cart[i].product._id %>">
+                  <img src='<%= cart[i].product.mainImage %>' class="card-img-top cart-img" style="width: 50%;" alt='..' />
+                  <div class="card-body">
+                    <h5 class="card-title"><%= cart[i].product.productName %> </h5>
+                    <p class="card-text">Option: <%= cart[i].option %></p>
+                    <p class="card-text">Category: <%= cart[i].product.category %></p>
+                    <p class="card-text">Price: $<%= cart[i].product.price %></p>
+                    <!-- Remove the data-dismiss attribute from the button -->
+                    <button type="button" class="btn btn-danger cart-remove-btn">Remove</button>
+                  </div>
+                </div>
+              <% } } else { %> 
+                <h3>No Items Added Yet</h3>
+              <% } %>
+
+          
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button class="btn cardBtn btn-success check-out-cart">Check Out</button>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="push"></div>
+</div>
+     
+    
+<footer class="text-center mt-5" >
+  <i class="fa-brands fa-instagram" style="font-size: 15px; color: white;"></i>  <p style="display: inline; color: white; font-size: 15px"> Connect With Us On</p> 
+     <b><a href="https://www.instagram.com/chinatimedirect/" style="color: white; font-size: 15px">Instagram</a></b>
+
+     <div style="display: block;"> <i class="fa-brands fa-square-x-twitter" style="font-size: 15px; color: white;"></i> 
+       <p style="display: inline; color: white; font-size: 15px"> Connect With Us On</p>   
+     <a href="https://www.twitter.com/marchettiatl" style="color: white;">X</a></b></div>
+
+     <div style="display: block;"> <i class="fa-regular fa-envelope" style="color: white;"></i>
+       <a href="/contact-us" style="color: white;"> Email Us</a>   
+       </div>
+     <div class="mt-2">
+       <p style="color: white; font-size: 15px">&copy; 2023 China Time Direct</p>
+       </div>
+   </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/pages.js"></script>
+    
+</body>
+</html>
+          
+          
+
+      
+            
+         
+                   
+              
+     
+
+

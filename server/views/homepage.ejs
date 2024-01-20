@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malik's Example E-Commerce</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Welcome to Malik's E-Commerce Example Store, where style meets convenience. Explore our curated collection of premium products, ranging from fashion-forward clothing to cutting-edge electronics. At Malik's, we prioritize quality, ensuring that each item in our store is meticulously selected to meet the highest standards.">
+    <link rel="icon" href="https://res.cloudinary.com/dodie1q2w/image/upload/v1694766823/7173014341636956259_sc3avx.svg">
+<link href="/css/mediaquery.css" rel="stylesheet" type="text/css">
+<link href="/css/cart.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <%- include('partials/navbar') %>
+
+      <!-- Search Bar-->
+      <!-- <div class="wrapper"> -->
+        <div class="banner text-center">
+<h1 class="mb-2" style=" color: black;font-family: Tahoma, sans-serif;">Malik's E-Commerce Shop</h1>
+
+<div class="card-container categories-container mb-2">
+
+  <a href="/women-clothing"><button class="btn category bg-info mt-2" >
+    Women Clothing
+</button></a>
+
+<a href="/men-clothing"><button class="btn category bg-info mt-2">
+ Men Clothing
+</button></a>
+
+<a href="/women-watches-and-jewelry"><button class="btn category bg-info mt-2">
+  Women Watches & Jewelry
+  </button></a>
+<a href="/men-watches-and-jewelry"><button class="btn category bg-info mt-2 "> 
+Men Watches & Jewelry
+</button></a>
+</div>
+</div> <!-- end banner div-->
+
+        <video class="mt-3" id="homepage-video" width="100%" height="100%" autoplay muted playsinline loop="true">
+          <source src="https://res.cloudinary.com/deazxgqzv/video/upload/v1705715218/ecommercevideo_km4sak.mp4" type="video/mp4">
+        
+          Your browser does not support the video tag.
+        </video>
+      <div class="container text-center">
+
+
+
+
+
+        <div class="shop-by-brand mb-3 text-center">
+         <h3>Shop By Brand</h3>
+          <div class="row" style="margin: 0;">
+        
+            <div class="col-md-4 shop-div" style="padding: 0;">
+              <b>Women</b>
+              <a href="/women-clothing" class="shop-by-brand-div">
+                <div class="card" style="margin: 0;">
+                  <img src="https://res.cloudinary.com/deazxgqzv/image/upload/v1705709407/mediamodifier-7cERndkOyDw-unsplash_z2pozs.jpg" class="card-img-top" alt="" >
+                </div>
+              </a>
+            </div>
+            
+            <div class="col-md-4 col-sm-6 shop-div" style="padding: 0;">
+              <b>Men</b>
+              <a href="/men-clothing" class="shop-by-brand-div">
+                <div class="card" style="">
+                  <img src="https://res.cloudinary.com/deazxgqzv/image/upload/v1705701202/nimble-made-Jf7JqVazm-4-unsplash_pmm6ym.jpg" class="card-img-top" alt="" style="width: 100%;">
+                </div>
+              </a>
+            </div>
+        
+            <div class="col-md-4 col-sm-6 shop-div" style="padding: 0;">
+              <b>Women Bag</b>
+              <a href="/women-bags" class="shop-by-brand-div">
+                <div class="card" style="margin: 0;">
+                  <img src="https://res.cloudinary.com/deazxgqzv/image/upload/v1705701194/creative-headline-APNnyM36puU-unsplash_ptdytd.jpg" class="card-img-top" alt="" style="width: 100%;">
+                </div>
+              </a>
+            </div>
+           
+            <div class="col-md-4 col-sm-3 shop-div" style="padding: 0;">
+              <b>Women Shoes</b>
+              <a href="/women-shoes" class="shop-by-brand-div">
+                <div class="card" style="margin: 0;">
+                  <img src="https://res.cloudinary.com/deazxgqzv/image/upload/v1705710112/camila-damasio-mWYhrOiAgmA-unsplash_fuek93.jpg" class="card-img-top" alt="" style="width: 100%;">
+                </div>
+              </a>
+            </div>
+            
+            <div class="col-md-4 col-sm-3 shop-div" style="padding: 0;">
+              <b>Men Shoes</b>
+              <a href="/women-shoes" class="shop-by-brand-div">
+                <div class="card" style="margin: 0;">
+                  <img src="https://res.cloudinary.com/deazxgqzv/image/upload/v1705709716/trendest-studio-XZ3EmAIWuz0-unsplash_joacgy.jpg" class="card-img-top" alt="" style="width: 100%;">
+                </div>
+              </a>
+            </div>
+        
+            <div class="col-md-4 col-sm-3 shop-div" style="padding: 0;">
+              <b>Sunglasses</b>
+              <a href="/sunglasses" class="shop-by-brand-div">
+                <div class="card" style="margin: 0;">
+                  <img src="https://res.cloudinary.com/deazxgqzv/image/upload/v1705709885/anton-be-ODhxNCO8XHY-unsplash_hoczkz.jpg" class="card-img-top" alt="" style="width: 100%;">
+                </div>
+              </a>
+            </div>
+        
+            <!-- Repeat the above structure for additional rows and columns -->
+        
+          </div>
+        </div>
+        
+        
+        
+
+
+
+<h6 class="mt-3 mb-3" style="color: black;"><b>5-14 Day FREE SHIPPING & Delivery WORLDWIDE via FedEx or DHL 📬</b></h6>
+<div class="text-center" style="background-color: rgb(0, 85, 52); color: white; width: 100%;">
+<h5>Recently Listed </h5>
+ <h3>Must Have Items</h3> 
+ <h1>SALE</h1>
+</div>
+
+ <div class="row products-container text-center" id="searchResults">
+          
+
+  <!-- Products-->
+  <% for (let i = 0; i < products.length; i++) { %>
+    <article class='profile-card text-center'>
+      <div class='card-body'>
+        <div class='row '>
+    <div class="col-md-3 col-lg-4 col-sm-6 product"> <!-- Adjust the column sizes as needed -->
+      <div class="card" id=<%= products[i]._id %> style="border-width: 0px;">
+        <img src=<%= products[i].mainImage %> class="card-img-top img-fluid product-img"  alt=<%= products[i].productName %> />
+        <div class="card-body">
+          <b class="card-title"><%= products[i].productName %></b>
+          <h6>$<%= products[i].price %></h6>
+          <button class="btn cardBtn view-product" style="color: white; background-color: rgb(60, 60, 138); border-radius: 2px;">View Details</button>
+          <button class="btn cardbtn selectSize" style="color:white; background-color: rgb(80, 174, 85); border-radius: 2px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add To Cart
+          </button>
+          <ul class="product-options">
+            <%if(products[i].options.length > 0) {%>
+          <% for (let j = 0; j < products[i].options.length; j++) { %>
+              <li class="list-group-item" style="display: none;"><div></div><b><%= products[i].options[j] %></b></li>
+              <% } %>
+              <% } %>
+            </ul>
+        </div>
+      </div>
+      </div>
+      </div>
+      </article>
+
+  <% } %>
+  
+
+     
+
+    </div> <!-- end product container-->
+
+    <!--INFO ABOUT WATCH MATERIAL-->
+    <div class="row text-center mt-3">
+    
+
+
+
+  <div class="secure-payment">
+    <img class="col-3" style="width: 100px" src="/images/securepayment.svg"/>
+    <h4 class="mt-2"><b>SAFE & SECURE PAYMENT METHODS</b></h4>
+    <p>We provide a safe and secure checkout for payment. Our payments are processed through Stripe&reg. We also use 256 bit SSL encryption on our website. In order to provide a high degree of privacy, SSL encrypts data that is transmitted across the web. This means that anyone who tries to intercept any data will only see a garbled mix of characters that is impossible to decrypt.
+      If you look above in your browsers address bar you will see a lock icon next to our website name which shows that our website is securely encrypted using 256 bit https protocol.
+      So rest assured every payment made on our website is 100% safe and secure. We also allow bitcoin payments as well. 
+    </p>
+    </div>
+  </div>
+
+</div>
+
+
+    <!--END INFO-->
+
+
+<!-- options chart modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Select Option</h1>
+        <img class="card-img-top" alt="product"/>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>Name</h4>
+        <b>Price</b>
+      <div class="card" style="width: '18rem';">
+ <ul class="list-group list-group-flush">
+  
+ </ul>
+ </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary size-chart-dismiss" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary add-to-cart">Add To Cart</button> 
+      </div>
+    </div>
+  </div>
+</div> 
+
+    <!--successfully added to cart modal-->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+      
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           <h2 class="text-success">Successfully Added To Cart!</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- cart modal-->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<div class="modal-dialog">
+  <div class="modal-content">
+    
+      <div class="modal-header">
+     
+          <div class="modal-body">
+
+   <button class="btn text-danger" id="close-cart" data-bs-dismiss="modal"> Close X</button>
+<div class="cart-container">
+<div class="row gx-5 products text-center">
+  <div class="col-12">
+    <div class="cart-products">
+      <% if (cart) { %>
+        <% for (let i = 0; i < cart.length; i++) { %>
+          <div class="card item-in-cart" id="<%= cart[i].product._id %>">
+            <img src='<%= cart[i].product.mainImage %>' class="card-img-top cart-img" style="width: 50%;" alt='..' />
+            <div class="card-body">
+              <h5 class="card-title"><%= cart[i].product.productName %> </h5>
+              <p class="card-text">Option: <%= cart[i].option %></p>
+              <p class="card-text">Category: <%= cart[i].product.category %></p>
+              <p class="card-text">Price: $<%= cart[i].product.price %></p>
+              <!-- Remove the data-dismiss attribute from the button -->
+              <button type="button" class="btn btn-danger cart-remove-btn">Remove</button>
+            </div>
+          </div>
+        <% } } else { %> 
+          <h3>No Items Added Yet</h3>
+        <% } %>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+<button class="btn cardBtn btn-success check-out-cart">Check Out</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="push"></div>
+</div>
+
+
+<%- include('partials/footer')%>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="/home-page.js"></script>
+
+</body>
+</html>

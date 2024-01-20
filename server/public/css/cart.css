@@ -1,0 +1,25 @@
+
+.cart-container {
+  
+    background-color: rgb(232, 224, 224);
+   
+
+}
+
+.cart-img {
+width: 45% !important;
+height: 150px !important;
+margin: 0 auto;
+margin-top: 10px;
+
+
+}
+
+.check-out-cart{
+    width: 100%;
+    border-radius: 0px !important;
+}
+
+.item-in-cart{
+    border-radius: 0px !important;
+}

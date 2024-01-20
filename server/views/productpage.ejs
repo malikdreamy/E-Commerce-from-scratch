@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.productName %></title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="<%= product.productName %>">
+    <link rel="icon" href="https://res.cloudinary.com/dodie1q2w/image/upload/v1694766823/7173014341636956259_sc3avx.svg">
+    <link href="/css/mediaquery.css" rel="stylesheet" type="text/css">
+    <link href="/css/cart.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!--Nav Bar-->
+    <%-include('partials/navbar')%>
+
+<% const mp4Reg = /video/ %>
+     <!-- main content-->
+     <div class="wrapper">
+        <div class="container">
+            <% if (product) { %>
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="<%= product.mainImage %>" class="d-block w-100" alt="...">
+                    </div>
+                    
+                    <% for (let i = 0; i < product.images.length; i++) { %>
+                      <div class="carousel-item">
+                        <% if (mp4Reg.test(product.images[i])) { %>
+                          <video class="d-block w-100" controls autoplay muted loop="true">
+                            <source src="<%= product.images[i] %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                        <% } else { %>
+                          <img src="<%= product.images[i] %>" class="d-block w-100" alt="product">
+                        <% } %>
+                      </div>
+                    <% } %>
+                  </div>
+              
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              
+                <div class="card product-info text-bg-light mb-3 text-center" style="max-width: 100%;">
+                  <div class="card-header"><b><%= product.productName %></div>
+                  <div class="card-body" id="<% product._id %>">
+                    <h5 class="card-title">Price: $<%= product.price %></h5>
+                  <h2 class="text-center mt-3">Details</h2>
+                    <div class="card-text text-center product-description"><%= product.description %></div>
+                    <button href="#" class="btn cardbtn selectSize selectOption" data-bs-toggle="modal" data-bs-target="#exampleModal">Pick Option</button>
+                  </div>
+                </div>
+              <% } %>
+
+
+<!-- option chart modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Select Color Option:</h1>
+          <img src="<%= product.mainImage %>" class="card-img-top" alt="product main image" style="width: 50%;"/>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Name: <%= product.productName %></h4>
+          <b>Price: $<%= product.price %></b>
+        <div class="card" style="width: '18rem';">
+   <ul class="list-group list-group-flush" id="<%= product._id %>">
+
+    <%if(product.options.length > 0){ %>
+      <%for(let i = 0; i < product.options.length; i++) {%>
+<li class="list-group-item select-option"><%= product.options[i]%> <div style="width: 20px; height: 20px; border-radius: 50%; background-color: <%= product.options[i] %>;"> </div></li> <!-- works perfect but for some reason shows red-->
+<%}%>
+
+
+      <% }%>
+
+     
+   </ul>
+   </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary size-chart-dismiss" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary add-to-cart">Add To Cart</button> 
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!--successfully added to cart modal-->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+    
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <h2 class="text-success">Successfully Added To Cart!</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+      <!-- cart modal-->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+        <div class="modal-header">
+       
+            <div class="modal-body">
+  
+     <button class="btn text-danger" id="close-cart" data-bs-dismiss="modal"> Close X</button>
+  <div class="cart-container">
+  <div class="row gx-5 products text-center">
+    <div class="col-12">
+      <div class="cart-products">
+        <% if (cart) { %>
+          <% for (let i = 0; i < cart.length; i++) { %>
+            <div class="card item-in-cart" id="<%= cart[i].product._id %>">
+              <img src='<%= cart[i].product.mainImage %>' class="card-img-top cart-img" style="width: 50%;" alt='..' />
+              <div class="card-body">
+                <h5 class="card-title"><%= cart[i].product.productName %> </h5>
+                <p class="card-text">Option: <%= cart[i].option %></p>
+                <p class="card-text">Category: <%= cart[i].product.category %></p>
+                <p class="card-text">Price: $<%= cart[i].product.price %></p>
+                <!-- Remove the data-dismiss attribute from the button -->
+                <button type="button" class="btn btn-danger cart-remove-btn">Remove</button>
+              </div>
+            </div>
+          <% } } else { %> 
+            <h3>No Items Added Yet</h3>
+          <% } %>
+  
+      
+  
+  
+  
+  
+  
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+  <button class="btn cardBtn btn-success check-out-cart">Check Out</button>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+             
+
+              
+              
+              
+          
+
+
+        </div> <!-- end container div-->
+        <div class="push"></div>
+        </div> <!--ending wrapper div for footer-->
+
+
+      <%-include('partials/footer') %>
+           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  <script src="/productpage.js"></script>
+
+  
+</body>
+</html>

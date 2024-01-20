@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fashion-Store Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      </head>
+<body>
+
+    <style>
+        /* Add custom CSS to center the content */
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #image-display-container {
+            overflow-y: auto;
+  /* Optional: This ensures the container takes up the full viewport height */
+}
+
+
+            .stats-container {
+        max-height: 600px; /* Set the maximum height for the container */
+        min-height: 500px;
+        overflow-y: auto; /* Enable vertical scrolling */
+        border: 1px solid #ccc; /* Optional: Add a border for visual distinction */
+    }
+
+    .upload-container{
+        max-height: 800px; /* Set the maximum height for the container */
+        min-height: 600px;
+        overflow-y: auto; /* Enable vertical scrolling */
+        border: 1px solid #ccc; 
+    }
+
+        
+    </style>
+</head>
+<body>
+    <% function getDate(){ // helper function for current date
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const formattedDate = `${month}-${day}-${year}`;
+        return formattedDate;
+        }; %>
+
+
+    <div class="center-content text-center">  
+        <div class="container">
+            <div class="row">
+                <h1>Fashion-Store Admin</h1>
+                <h3 class="mt-3">Stats For The Current Day</h3>
+                <div class="col-12 text-center"> 
+                    <!--      Stats For Current Date     -->
+            <div class="stats-container">
+                <div class="card">
+                    <div class="card-header text-bg-secondary">
+                      <b >Stats For: <%= `${getDate()}` %> </b>
+                      <div>
+                      <b>Number of Visitors: <%= visitorsToday.length %></b>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                        <b>Countries</b>
+                        <!--Create new Map to set how many times country was visited -->
+                        <% let countryMap = new Map() %>
+                        <% for(let i = 0; i < visitorsToday.length; i++){ %>
+                            <% if(!countryMap.get(visitorsToday[i].country)){ %>    
+                                <% countryMap.set(visitorsToday[i].country, 1) %>
+                        <%   } else if(countryMap.get(visitorsToday[i].country)) { %>
+                        <% let num = countryMap.get(visitorsToday[i].country) %>
+                        <% let newNum = num + 1 %>
+                        <% countryMap.set(visitorsToday[i].country, newNum)%>
+                        <%}}%>
+                        <% for( const[key, value] of countryMap){ %>
+                            <li class="list-group-item text-bg-info p-3"><%= `Country: ${key} Visited: ${value} times`%></li>
+                      <%  } %>
+                        </div>
+                        <h3><b><u>Visitor Details</u></b></h3>
+                       
+
+
+<!--         Visitor Details For The Day    -->
+
+<% if (visitorsToday && visitorsToday.length > 0) { %>
+    <ul class="list-group">
+        <% visitorsToday.forEach(visitor => { %>
+            <li class="mt-4 list-group text-bg-secondary p-3"><b>User ID: </b> <%= visitor.user %></li>
+            <li class="list-group-item text-bg-warning p-3"><b>IP Address: </b><%= visitor.ipAddress %></li> 
+            <li class="list-group-item text-bg-info p-3"><b>City: </b><%= visitor.city%></li>
+            <li class="list-group-item text-bg-info p-3"><b>Region: </b><%= visitor.region %></li>
+            <li class="list-group-item text-bg-success p-3"><b>Country: </b><%= visitor.country %></li>
+            <li class="list-group-item text-bg-info"><b>First Visit Date: </b><%= visitor.firstVisitDate %></li>
+            <li class="list-group-item text-bg-info"><b>Last Time Seen Date: </b><%= visitor.lastSeenDate %></li>
+            <li class="list-group-item text-bg-info"><b>Last Time Seen Time: </b><%= visitor.lastSeenTime %></li>
+            <li class="list-group-item text-bg-info"><b>User Agent: </b><%= visitor.userAgent %></li>
+            <% Array.from(visitor.pagesVisited.entries()).forEach(entry => { %>
+                <li class="list-group-item text-bg-primary p-3"><b>Visited:</b><%= entry[0] + " "%> <%= entry[1] %><b> Times</b></li>
+            <% }); %>
+            <li class="list-group-item"><b>Is Using VPN? </b><%= visitor.isVpn %></li>
+            <li class="list-group-item"><b>Is Using Proxy: </b><%= visitor.isProxy %></li>
+
+
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No visitors found.</p>
+<% } %>
+
+
+           
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Upload Products Section-->
+<h3 class="mt-3">Upload New Product</h3>
+            <div class="col-12 text-center mt-3"> 
+                <div class="upload-container">
+        <div class="card upload-container">
+            <div class="card-header text-bg-success">
+               Upload Product
+            </div>
+                    
+                <div class="card-body">
+                    <h5 class="card-title">Upload Products</h5>
+                    <!--Images that will be uploaded-->
+                    <div id="image-display-container" class="container">
+                    </div>
+                </div>
+                <!-- Select Category-->
+                <select class="form-select mb-3" id="category-select">
+                    <option selected>Select a Category</option>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
+                </select>
+                            <select class="form-select mb-3" id="sub-category-select">
+                                <option selected>Select a Sub Category</option>
+                                <option value="Men Watches And Jewelry">Men Watches</option>
+                                <option value="Women Watches And Jewelry">Women Watches</option>
+                                <option value="Men Shoes">Men Shoes</option>
+                                <option value="Women Shoes">Women Shoes</option>
+                                <option value="Men Clothing">Men Clothing</option>
+                                <option value="Women Clothing">Women Clothing</option>
+                                <option value="Men Bags">Men Bags</option>
+                                <option value="Women Bags">Women Bags</option>
+                                <option value="Men Sunglasses">Men Sunglasses</option>
+                                <option value="Women Sunglasses">Women Sunglasses</option>
+                            </select>
+                    <!--Select Product Name-->
+                 <input type="text" class="form-control mb-3" id="product-name" placeholder="Product Name" aria-label="Username" aria-describedby="addon-wrapping">
+
+                 <!-- Product Description-->
+                 <div class="input-group mb-3">
+                    <span class="input-group-text">Product Description</span>
+                    <textarea class="form-control" id="product-description" aria-label="With textarea"></textarea>
+                  </div>
+
+                   <!-- Product Options-->
+                   <div class="input-group mb-3">
+                    <input type="text" class="form-control mb-3" id="product-options" placeholder="Product Options Example: 'black, white, blue'" aria-label="Username" aria-describedby="addon-wrapping">
+                  </div>
+
+                    <!-- Product Price-->
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="number" id="product-price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <div class="card-body">
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile02" multiple>
+                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    </div>
+                    <button class="btn text-bg-success" onclick="uploadImages()">Upload Products</button>
+                </div>
+                
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+            <!--Edit Products Section -->
+            <h3 class="mt-3">Edit Product</h3>
+            <div class="col-12 text-center mt-3"> 
+                <div class="upload-container">
+        <div class="card upload-container">
+            <div class="card-header text-bg-warning">
+               Edit Product
+            </div>
+
+            
+            <div class="card-body">
+                <h5 class="card-title">Edit Products</h5>
+
+                <!--Input to search for product-->
+                <div class="input-group flex-nowrap">
+                    <button id="search-product" class="input-group-text" id="addon-wrapping">Search</button>
+                    <input id="search-field" type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping">
+                  </div>
+
+                <!--Images that will be show to update -->
+                <div id="image-display-container-edit" class="container">
+                    <button class="btn text-bg-primary" id="clear-search">Clear Search</button>
+                    <div class="row" id="image-display-container-edit-row"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+
+               <!--upload blog-->
+
+               <div class="col-12 text-center mt-3 container"> 
+                <div class="upload-container">
+        <div class="card upload-container">
+            <div class="card-header text-bg-success">
+               Upload Blog
+            </div>
+                    
+
+                <div class="card-body">
+                    <h5 class="card-title">Upload Blog</h5>
+                    <!--Images that will be uploaded-->
+                    <div id="blog-image-display-container" class="container">
+                    </div>
+                </div>
+     
+              
+                           
+                    <!--Blog Title-->
+                 <input type="text" class="form-control mb-3" id="blog-title" placeholder="Blog Title" aria-label="Username" aria-describedby="addon-wrapping">
+
+                 <!-- Blog Content-->
+                 <div class="input-group mb-3">
+                    <span class="input-group-text">Blog Content</span>
+                    <textarea class="form-control" id="blog-content" aria-label="With textarea"></textarea>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Blog Content Second Section</span>
+                    <textarea class="form-control" id="blog-content-second" aria-label="With textarea"></textarea>
+                  </div>
+
+                  
+                  <button class=" mb-3 btn text-bg-success add-link-pair" style="width: 100px; margin-left: 45%;">Add Link</button>
+                      
+                  <div class="link-box">
+                  <div class="input-group mb-3 link-pair">
+                    <input type="text" class="form-control mb-3 link-title"  placeholder="Link Title" aria-label="Username" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control mb-3 link" placeholder="Link" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+                </div>
+
+                
+
+               
+                  <div class="card-body">
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile03" multiple>
+                        <label class="input-group-text" for="inputGroupFile03">Upload</label>
+                    </div>
+                    <button class="btn text-bg-success" onclick="uploadBlog()">Upload Products</button>
+                </div>
+                
+            </div>
+            </div>
+            </div>
+
+
+
+<!--Edit Blog-->
+            <h3 class="mt-3">Edit Blog</h3>
+            <div class="col-12 text-center mt-3"> 
+                <div class="upload-container">
+        <div class="card upload-container">
+            <div class="card-header text-bg-warning">
+               Edit Blog
+            </div>
+
+            
+            <div class="card-body">
+                <h5 class="card-title">Edit Blog</h5>
+
+                <!--Input to search for product-->
+                <div class="input-group flex-nowrap">
+                    <button id="search-blog-btn" class="input-group-text" id="addon-wrapping">Search</button>
+                    <input id="search-blog" type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping">
+                  </div>
+
+                <!--Images that will be show to update -->
+                <button class="btn text-bg-primary mt-2 mb-2" id="clear-search-blog">Clear Search</button>
+                <div id="image-display-container-edit-blog" class="container">
+                    <div class="row" id="image-display-container-edit-row-blog"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+           
+
+
+
+
+
+
+                    <!-- All Time Visitors -->
+                    <h3 class="mt-3">All Time Visitors</h3>
+                    <div class="col-12 text-center mt-3"> 
+                        <div class="stats-container">
+                <div class="card">
+                    <div class="card-header text-bg-secondary">
+                       All Time Visitors
+                    </div>
+                    <!--drop down select form-->
+                    <select class="form-select stats-form" aria-label="Default select example">
+                        <option value="Show Visitors By" selected>Show Visitors By</option>
+                        <option value="This Week">This Week</option>
+                        <option value="This Month">Last 30 Days</option>
+                        <option value="All Time">All Time</option>
+                      </select>
+                      <button class="btn show-stats text-bg-primary">Get Stats</button>
+
+
+                    <h2><u><b>Visitor Panel: </b></u></h2>
+                    <h3 class="visitor-count-stat"><%= visitors.length %></h3>
+                    <div class="card-body">
+                     
+            <div class="all-visitors-div">
+                <% if (visitors && visitors.length > 0) { %>
+                    <ul class="list-group">
+                        <% visitors.forEach(visitor => { %>
+                            <li class="mt-5 list-group text-bg-secondary p-3"><b>User ID: </b> <%= visitor.user %></li>
+                            <li class="list-group-item text-bg-warning p-3"><b>IP Address: </b><%= visitor.ipAddress %></li> 
+                            <li class="list-group-item text-bg-info p-3"><b>City </b><%= visitor.city%></li>
+                            <li class="list-group-item text-bg-info p-3"><b>Region </b><%= visitor.region %></li>
+                            <li class="list-group-item text-bg-success p-3"><b>Country </b><%= visitor.country %></li>
+                            <li class="list-group-item text-bg-info p-3"><b>First Visit Date: </b><%= visitor.firstVisitDate %></li>
+                            <li class="list-group-item text-bg-info p-3"><b>Last Time Seen Date: </b><%= visitor.lastSeenDate %></li>
+                            <li class="list-group-item text-bg-info p-3"><b>Last Time Seen Time: </b><%= visitor.lastSeenTime %></li>
+                            <li class="list-group-item text-bg-info p-3"><b>User Agent: </b><%= visitor.userAgent %></li>
+                            <% Array.from(visitor.pagesVisited.entries()).forEach(entry => { %>
+                                <li class="list-group-item text-bg-primary p-3"><b>Visited:</b><%= entry[0] + " "%> <%= entry[1] %><b> Times</b></li>
+                            <% }); %>
+                            <li class="list-group-item"><b>Is Using VPN? </b><%= visitor.isVpn %></li>
+                            <li class="list-group-item"><b>Is Using Proxy: </b><%= visitor.isProxy %></li>
+    
+            
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p>No visitors found.</p>
+                <% } %>
+            </div>
+           
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+
+
+
+
+            <!--Block User By IP Address -->
+            <h3 class="mt-3">Block IP Address</h3>
+                <div class="col-12 text-center mt-3 mb-5"> 
+                    <div class="">
+            <div class="card">
+                <div class="card-header text-bg-danger">
+                   Block user
+                </div>
+                <div class="card-body">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">IP Address</span>
+                        <input type="text" class="form-control" id="block-user-input" placeholder="IP Address" aria-label="Username" aria-describedby="addon-wrapping">
+                        <button class="btn text-bg-danger" id="block-btn">BLOCK!</button>
+                      </div>
+
+                    </div>
+                        </div>
+                            </div>
+                                    </div>
+
+
+
+
+            </div> <!--Row Ending Div-->
+        </div>
+    </div>
+    </div> 
+
+
+    <!-- Include Bootstrap JS at the end of the body -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <script src="/admin-panel.js"></script>
+
+</body>
+</html>
