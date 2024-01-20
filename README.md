@@ -19,8 +19,13 @@ Database: MongoDB
 Frontend: HTML, CSS, JavaScript,
 Visitor Analytics: Utilizes a custom solution for capturing and analyzing visitor data.
 
+Homepage
 
 <img width="885" alt="Screen Shot 2024-01-20 at 1 03 41 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/79747407-9b74-48b3-9c28-caf8a8522e81">
+
+Product Page
+<img width="1064" alt="Screen Shot 2024-01-20 at 1 02 32 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/b03bb432-c4bc-4820-b965-8772569ee51d">
+
 
 <img width="1443" alt="Screen Shot 2024-01-20 at 12 53 33 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/382ac1a8-0412-45b6-9ad1-4cf664c784af">
 
@@ -29,7 +34,6 @@ Visitor Analytics: Utilizes a custom solution for capturing and analyzing visito
 
 
 
-<img width="1064" alt="Screen Shot 2024-01-20 at 1 02 32 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/b03bb432-c4bc-4820-b965-8772569ee51d">
 
 
 <img width="1441" alt="Screen Shot 2024-01-20 at 12 55 54 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/e522c5ed-f9a4-491d-aba6-6cffe8a7b422">
