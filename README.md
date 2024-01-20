@@ -1,5 +1,5 @@
 E-Commerce Website with Enhanced Features
-Welcome to my E-Commerce Website repository! This project is designed to provide a comprehensive platform for users to manage products, blogs, and gain insights into visitor analytics. Below is a detailed guide to help you understand the features and set up the application.
+Welcome to my E-Commerce Website repository! This project is designed to provide a comprehensive platform for users to manage products, blogs, and gain insights into visitor analytics. Below is a detailed guide to help you understand the features and set up the application. No Wordpress, No Wix, No Shopify! 100% Javascript and MongoDB created 100% by Malik Tornes. 
 
 Features
 1. Product Management
@@ -33,8 +33,11 @@ Viewing Stats
 <img width="1443" alt="Screen Shot 2024-01-20 at 12 53 33 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/382ac1a8-0412-45b6-9ad1-4cf664c784af">
 
 
-
+Uploading Products
 <img width="1441" alt="Screen Shot 2024-01-20 at 12 55 54 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/e522c5ed-f9a4-491d-aba6-6cffe8a7b422">
 
-<img width="1443" alt="Screen Shot 2024-01-20 at 12 53 33 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/682e4819-7f9c-48b9-b234-bef1ef9ab126">
+Uploading Blog
+<img width="1630" alt="Screen Shot 2024-01-20 at 1 01 29 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/6c64a8d0-34bf-4704-beb4-b21274fb62f6">
+
+
 
