@@ -28,6 +28,11 @@ Edit Blogs: Modify blog content and keep your audience informed.
    Easily communiate with customers! A customer can send an email to your email through the Contact Us and it goes straight to any email you choose.
    Get real time questions and comments directly from your customer!
 
+8. Security!
+   If someone attempts to login to the Admin page and gets the password wrong more than 5 times the users IP address will automatically be blocked from the page. So if they try to brute force login to the admin panel
+   the IP address will be blocked and a Blocked Page will only be rendered to them so they cannot keep trying. Also the IP address stays blocked forever unless the actual Admin removes it,
+    so they would not be able to continue trying from their current IP. This makes it difficult for someone to brute force login as they would have to keep changing their IP address every five attempts.
+
 Technologies Used
 Backend: Node.js, Express.js, Cloudinary, EJS, Sendgrid, Square, tryspeed
 
