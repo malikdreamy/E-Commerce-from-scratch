@@ -1,3 +1,5 @@
+Link: https://malikecommerce.store/
+
 Homepage
 
 <img width="885" alt="Screen Shot 2024-01-20 at 1 03 41 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/79747407-9b74-48b3-9c28-caf8a8522e81">
@@ -18,8 +20,12 @@ Insightful Analytics: Gain valuable insights into user behavior for strategic de
 Create Blogs: Share engaging content by uploading blogs with titles, content, and images.
 Edit Blogs: Modify blog content and keep your audience informed.
 
+6. Accept Credit Card & Bitcoin Payments
+   Accept payments from all major credit card issuers. Also accept Bitcoin! The Ecommerce site is also hosted over SSL so
+   all payments to Square are secure and encrypted.
+
 Technologies Used
-Backend: Node.js, Express.js, Cloudinary, EJS, Sendgrid
+Backend: Node.js, Express.js, Cloudinary, EJS, Sendgrid, Square, tryspeed
 
 Database: MongoDB 
 
