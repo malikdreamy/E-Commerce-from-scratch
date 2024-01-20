@@ -13,7 +13,7 @@ Upload Products: Easily add new products to the catalog with details like name, 
 Edit Products: Update product information, pricing, or images effortlessly.
 
 3. Visitor Analytics
-Track Visitors: Monitor website traffic by capturing visitor IP addresses, city, and user agent information. These detailed stats also show the firs time the user visited, the last time they visited and also every page they visited on the website.
+Track Visitors: Monitor website traffic by capturing visitor IP addresses, city, and user agent information. These detailed stats also show the first time the user visited, the last time they visited and also every page they visited on the website.
 Insightful Analytics: Gain valuable insights into user behavior for strategic decision-making.
 
 5. Blog Management
