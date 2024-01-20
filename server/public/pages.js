@@ -19,7 +19,7 @@ const productContainer = document.getElementById("searchResults");
 
   const getVisitor = async () =>{
 
-    const visitor = await fetch('https://ipinfo.io/json?token=1ceaf0e8df9886');
+    const visitor = await fetch('https://ipinfo.io/json?token=');
   const visitorInfo = await visitor.json()
   // console.log(visitorInfo);
      let ip = visitorInfo.ip;
