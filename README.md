@@ -45,4 +45,20 @@ Uploading Blog
 <img width="1630" alt="Screen Shot 2024-01-20 at 1 01 29 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/6c64a8d0-34bf-4704-beb4-b21274fb62f6">
 
 
+Setup Instructions
+Clone the repository:
 
+
+git clone https://github.com/your-username/e-commerce-website.git
+Install dependencies:
+npm install
+
+Set up your MongoDB database and update the connection details in the configuration file.
+
+Start the application:
+npm run start
+
+Access the application at http://localhost:3000 in your browser.
+
+Configuration
+Update the environment variables in a .env file for sensitive information such as database credentials and API keys.
