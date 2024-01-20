@@ -24,6 +24,14 @@ Visitor Analytics: Utilizes a custom solution for capturing and analyzing visito
 
 <img width="1443" alt="Screen Shot 2024-01-20 at 12 53 33 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/382ac1a8-0412-45b6-9ad1-4cf664c784af">
 
+
+<img width="1008" alt="Screen Shot 2024-01-20 at 1 02 43 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/0eb67abb-777f-4994-acba-c0e2e807c593">
+
+
+
+<img width="1064" alt="Screen Shot 2024-01-20 at 1 02 32 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/b03bb432-c4bc-4820-b965-8772569ee51d">
+
+
 <img width="1441" alt="Screen Shot 2024-01-20 at 12 55 54 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/e522c5ed-f9a4-491d-aba6-6cffe8a7b422">
 
 <img width="1443" alt="Screen Shot 2024-01-20 at 12 53 33 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/682e4819-7f9c-48b9-b234-bef1ef9ab126">
