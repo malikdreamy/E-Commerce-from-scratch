@@ -4,7 +4,7 @@
 const loginBtn = document.querySelector(".btn");
 const getIp = async ()=>{
  
-    const visitorInfo = await fetch('https://ipinfo.io/json?token=1ceaf0e8df9886');
+    const visitorInfo = await fetch('https://ipinfo.io/json?token=');
     const info = await visitorInfo.json();
     // console.log(info);
     let ip = info.ip;
