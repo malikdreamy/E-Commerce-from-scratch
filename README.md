@@ -19,11 +19,11 @@ Create Blogs: Share engaging content by uploading blogs with titles, content, an
 Edit Blogs: Modify blog content and keep your audience informed.
 
 Technologies Used
-Backend: Node.js, Express.js, Cloudinary, EJS
+Backend: Node.js, Express.js, Cloudinary, EJS, Sendgrid
 
 Database: MongoDB 
 
-Frontend: HTML, CSS, JavaScript,
+Frontend: HTML, CSS, JavaScript
 
 Visitor Analytics: Utilizes a custom solution for capturing and analyzing visitor data.
 
