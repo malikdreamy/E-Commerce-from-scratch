@@ -17,10 +17,14 @@ Insightful Analytics: Gain valuable insights into user behavior for strategic de
 5. Blog Management
 Create Blogs: Share engaging content by uploading blogs with titles, content, and images.
 Edit Blogs: Modify blog content and keep your audience informed.
+
 Technologies Used
 Backend: Node.js, Express.js, Cloudinary, EJS
+
 Database: MongoDB 
+
 Frontend: HTML, CSS, JavaScript,
+
 Visitor Analytics: Utilizes a custom solution for capturing and analyzing visitor data.
 
 
