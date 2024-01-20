@@ -24,6 +24,10 @@ Edit Blogs: Modify blog content and keep your audience informed.
    Accept payments from all major credit card issuers. Also accept Bitcoin! The Ecommerce site is also hosted over SSL so
    all payments to Square are secure and encrypted.
 
+7. Communiate With Customers
+   Easily communiate with customers! A customer can send an email to your email through the Contact Us and it goes straight to any email you choose.
+   Get real time questions and comments directly from your customer!
+
 Technologies Used
 Backend: Node.js, Express.js, Cloudinary, EJS, Sendgrid, Square, tryspeed
 
