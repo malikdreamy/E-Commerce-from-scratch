@@ -49,7 +49,7 @@ Setup Instructions
 Clone the repository:
 
 
-git clone https://github.com/your-username/e-commerce-website.git
+git clone git@github.com:malikdreamy/E-Commerce-from-scratch.git
 Install dependencies:
 npm install
 
