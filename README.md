@@ -55,8 +55,11 @@ Blog Page
 Adding To Cart
 <img width="1008" alt="Screen Shot 2024-01-20 at 1 02 43 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/0eb67abb-777f-4994-acba-c0e2e807c593">
 
-Viewing Stats
-<img width="1443" alt="Screen Shot 2024-01-20 at 12 53 33 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/382ac1a8-0412-45b6-9ad1-4cf664c784af">
+Viewing All Stats By Country
+<img width="1094" alt="Screen Shot 2024-01-20 at 6 47 00 PM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/d1c87233-cdaf-4d38-ad2f-f7cb95cb1b4e">
+
+Viewing Stats By Particular User
+<img width="1083" alt="Screen Shot 2024-01-20 at 6 46 51 PM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/4ad509c1-382e-489c-8640-2eaf7971f377">
 
 
 Uploading Products
