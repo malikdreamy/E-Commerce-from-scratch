@@ -48,6 +48,10 @@ Visitor Analytics: Utilizes a custom solution for capturing and analyzing visito
 Product Page
 <img width="1064" alt="Screen Shot 2024-01-20 at 1 02 32 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/b03bb432-c4bc-4820-b965-8772569ee51d">
 
+Blog Page
+<img width="952" alt="Screen Shot 2024-01-20 at 6 37 14 PM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/7337d361-0110-4156-bf84-0c9a955dcde3">
+
+
 Adding To Cart
 <img width="1008" alt="Screen Shot 2024-01-20 at 1 02 43 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/0eb67abb-777f-4994-acba-c0e2e807c593">
 
