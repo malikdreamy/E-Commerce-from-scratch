@@ -94,7 +94,7 @@ router.post('/admin', async (req, res) => {
             return res.status(401).json({ message: 'Invalid username or password' });
         }
         // Password is correct, login successful
-        // You can generate a token or set a session here, if needed
+        // generate session here
         if(!req.session.admin){ //create admin session
             req.session.admin = `${uniqid('adminId-')}`
            
@@ -123,7 +123,7 @@ router.post('/block', async (req, res) => {
                 date: `${getCurrentTime()}, ${new Date}`,
             });
             await newBlockedUser.save();
-            res.json({url: req.body.url + '/block'}); // send user the blocked url
+            res.json({url: req.body.url + '/block'}); // send user the blocked url 👺
             
         } catch (error) {
             console.error(error);
