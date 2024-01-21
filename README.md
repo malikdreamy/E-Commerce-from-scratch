@@ -33,7 +33,12 @@ Edit Blogs: Modify blog content and keep your audience informed.
    the IP address will be blocked and a Blocked Page will only be rendered to them so they cannot keep trying. Also the IP address stays blocked forever unless the actual Admin removes it,
     so they would not be able to continue trying from their current IP. This makes it difficult for someone to brute force login as they would have to keep changing their IP address every five attempts.
    Test it out :P
-   https://malikecommerce.store/admin-login
+      https://malikecommerce.store/admin-login
+   
+   ![IMG_1350](https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/14ebd898-12bc-4906-8a2a-05e61314c776)
+
+
+   
 
 Technologies Used
 Backend: Node.js, Express.js, Cloudinary, EJS, Sendgrid, Square, tryspeed
