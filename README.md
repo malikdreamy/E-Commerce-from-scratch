@@ -55,7 +55,7 @@ Blog Page
 Adding To Cart
 <img width="1008" alt="Screen Shot 2024-01-20 at 1 02 43 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/0eb67abb-777f-4994-acba-c0e2e807c593">
 
-Viewing All Stats By Country
+Viewing All Stats By Country. Below shows how many visitors came from a particular country.
 <img width="1094" alt="Screen Shot 2024-01-20 at 6 47 00 PM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/d1c87233-cdaf-4d38-ad2f-f7cb95cb1b4e">
 
 Viewing Stats By Particular Visitor
