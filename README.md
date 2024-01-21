@@ -65,6 +65,11 @@ Uploading Products
 Uploading Blog
 <img width="1630" alt="Screen Shot 2024-01-20 at 1 01 29 AM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/6c64a8d0-34bf-4704-beb4-b21274fb62f6">
 
+Checkout-Page
+<img width="779" alt="Screen Shot 2024-01-20 at 6 45 35 PM" src="https://github.com/malikdreamy/E-Commerce-from-scratch/assets/119153047/4cdfd617-dfcb-42e9-a786-5bb57812a55e">
+
+
+
 
 Setup Instructions
 Clone the repository:
