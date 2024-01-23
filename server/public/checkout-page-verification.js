@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", getVisitor);
 
 
 //credit card processing function
-const appId = 'sq0idp-V3oflBVat5UMKZaMOPGYFA';
-const locationId = 'LRHB4QDFNSW6J';
+const appId = 'APP_ID';
+const locationId = 'LOCATION_ID';
 
 async function initializeCard(payments) {
   const card = await payments.card();
