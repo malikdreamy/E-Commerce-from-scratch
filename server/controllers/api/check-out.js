@@ -42,7 +42,7 @@ customerString = customerString.concat(`${key}: ${customerInfo[key]}\n`);
 //message to send to customer
 const msg = {
   to: `${userEmail}`, 
-  from: `chinatimedirect@mail.com`, // Change to your verified sender
+  from: `mail@mail.com`, // Change to your verified sender
   subject: `Your Order Is Being Processed!`,
   html: ` <h1>Your Have Started A New Order With China Time Direct! </h1>
   <h2> Order for ${cartString} is currently being processed until bitcoin payment is verified:</h2>
@@ -61,8 +61,8 @@ console.log(customerString);
 
 //mesage to send to admin for processing
 const msgForAdmin = {
-  to: `chinatimedirect@mail.com`, 
-  from: `chinatimedirect@mail.com`, // Change to your verified sender
+  to: `mail@mail.com`, 
+  from: `mail@mail.com`, // Change to your verified sender
   subject: `Bitcoin Payment Started!`,
   html: ` <h1>New Bitcoin Payment Started From Customer. </h1>
  <h2> Order for ${cartString} is currently being processed!</h2>
@@ -151,7 +151,7 @@ router.post('/payment', async (req, res) => {
         //send confirmation email to customer
       const msg = {
         to: `${payload.customerOrder.email}`, 
-        from: `chinatimedirect@mail.com`, // Change to your verified sender
+        from: `mail@mail.com`, // Change to your verified sender
         subject: `Your Order Is Being Processed!`,
         html: ` 
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -171,8 +171,8 @@ router.post('/payment', async (req, res) => {
       
       //send order information to admin for processing
       const msgForAdmin = {
-        to: `chinatimedirect@mail.com`, 
-        from: `chinatimedirect@mail.com`, // Change to your verified sender
+        to: `mail@mail.com`, 
+        from: `mail@mail.com`, // Change to your verified sender
         subject: `NEW Successful Order!`,
         html: ` <h1>New order from customer! </h1>
        <h2> Order for ${cartString} is currently being processed!</h2>
